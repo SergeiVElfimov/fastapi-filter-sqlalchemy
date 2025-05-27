@@ -233,13 +233,7 @@ def FilterDepends(Filter: type[BaseFilterModel], *, by_alias: bool = False, use_
                 data = instance.model_dump(exclude_unset=True, exclude_defaults=True, by_alias=by_alias)
                 if original_filter := getattr(Filter.Constants, "original_filter", None):
                     prefix = f"{Filter.Constants.prefix}__"
-                    stripped = {}
-                    # TODO: replace with `removeprefix` when python 3.8 is no longer supported
-                    # stripped = {k.removeprefix(NestedFilter.Constants.prefix): v for k, v in value.items()}
-                    for k, v in data.items():
-                        if k.startswith(prefix):
-                            k = k.replace(prefix, "", 1)
-                        stripped[k] = v
+                    stripped = {k.removeprefix(prefix): v for k, v in data.items()}
                     return original_filter(**stripped)
                 return Filter(**data)
             except ValidationError as e:
