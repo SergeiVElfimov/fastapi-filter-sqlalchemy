@@ -21,7 +21,8 @@ name = "fastapi-filter-sqlalchemy"
 version = "0.0.1"
 description = "FastAPI filter"
 authors = ["Sergey V. Elfimov <elfimovserg@gmail.com>"]
-license = "MIT"
+packages = [{include = "fastapi_filter_sqlalchemy"}]
+license = "Apache-2.0"
 readme = "README.md"
 repository = "https://github.com/SergeiVElfimov/fastapi-filter-sqlalchemy"
 classifiers = [
