@@ -5,24 +5,15 @@ on:
     types: [published]
 
 jobs:
-  publish:
+  publish-service-client-package:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
     steps:
-      - name: Install poetry 
-        uses: abatilo/actions-poetry@v4
-    
-      - name: Config
-        env:
-          PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
-          PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-        run: |
-          poetry config http-basic.pypi "${{ env.PYPI_USERNAME }}" "${{ env.PYPI_PASSWORD }}"
-
-      - name: Build
-        run: |
-          poetry build
-
-      - name: Publish
-        run: |
-          poetry publish
+      - name: Publish PyPi package
+        uses: code-specialist/pypi-poetry-publish@v1
+        with:
+          PACKAGE_DIRECTORY: "./fastapi_filter_sqlalchemy/"
+          PYTHON_VERSION: "3.11"
+          PUBLISH_REGISTRY_USERNAME: ${{ secrets.PUBLISH_REGISTRY_USERNAME }}
+          PUBLISH_REGISTRY_PASSWORD: ${{ secrets.PUBLISH_REGISTRY_PASSWORD }}
