@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Install poetry 
-        uses: actions/checkout@v4
+        uses: abatilo/actions-poetry@v4
         with:
           python-version: ${{ matrix.python-version }}
           enable-cache: true
