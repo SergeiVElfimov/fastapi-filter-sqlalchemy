@@ -27,7 +27,7 @@ jobs:
     - name: Install dependencies
       run: poetry install
     - name: Run unit tests
-      run: pytest
+      run: poetry run pytest
 
   lint:
     runs-on: ubuntu-latest
