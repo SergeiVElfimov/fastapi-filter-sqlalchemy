@@ -23,7 +23,7 @@ def _backward_compatible_value_for_like_and_ilike(value: str):
     """
     if "%" not in value:
         warn(
-            "You must pass the % character explicitly to use the like and ilike operators.",
+            "You must pass the % character explicitly to use the contains and icontains operators.",
             DeprecationWarning,
             stacklevel=2,
         )

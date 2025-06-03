@@ -1,20 +1,15 @@
-import sys
 from collections import defaultdict
 from collections.abc import Iterable
 from copy import deepcopy
-from typing import Any, Optional, Union, get_args, get_origin
+from types import UnionType
+from typing import Any, Union, get_args, get_origin
 
 from fastapi import Depends
 from fastapi.exceptions import RequestValidationError
 from pydantic import BaseModel, ConfigDict, ValidationError, ValidationInfo, create_model, field_validator
 from pydantic.fields import FieldInfo
 
-UNION_TYPES: list = [Union]
-
-if sys.version_info >= (3, 10):
-    from types import UnionType
-
-    UNION_TYPES.append(UnionType)
+UNION_TYPES: list = [Union, UnionType]
 
 
 class BaseFilterModel(BaseModel, extra="forbid"):
@@ -135,14 +130,14 @@ def with_prefix(prefix: str, Filter: type[BaseFilterModel]) -> type[BaseFilterMo
         ```python
         from pydantic import BaseModel
 
-        from fastapi_filter.filter import FilterDepends
+        from fastapi_filter_sqlalchemy.filter import FilterDepends
 
         class NumberFilter(BaseModel):
-            count: Optional[int]
+            count: int | None
 
         class MainFilter(BaseModel):
             name: str
-            number_filter: Optional[Filter] = FilterDepends(with_prefix("number_filter", Filter))
+            number_filter: Filter | None = FilterDepends(with_prefix("number_filter", Filter))
         ```
 
     As a result, you'll get the following filters:
@@ -159,11 +154,11 @@ def with_prefix(prefix: str, Filter: type[BaseFilterModel]) -> type[BaseFilterMo
          from pydantic import BaseModel
 
         class NumberFilter(BaseModel):
-            count: Optional[int] = Query(default=10, alias=counter)
+            count: int | None = Query(default=10, alias=counter)
 
         class MainFilter(BaseModel):
             name: str
-            number_filter: Optional[Filter] = FilterDepends(with_prefix("number_filter", Filter))
+            number_filter: Filter | None = FilterDepends(with_prefix("number_filter", Filter))
         ```
 
     As a result, you'll get the following filters:
@@ -184,7 +179,7 @@ def with_prefix(prefix: str, Filter: type[BaseFilterModel]) -> type[BaseFilterMo
 
 
 def _list_to_str_fields(Filter: type[BaseFilterModel]):
-    ret: dict[str, tuple[Union[object, type], Optional[FieldInfo]]] = {}
+    ret: dict[str, tuple[object | type, FieldInfo | None]] = {}
     for name, f in Filter.model_fields.items():
         field_info = deepcopy(f)
         annotation = f.annotation
@@ -205,7 +200,7 @@ def _list_to_str_fields(Filter: type[BaseFilterModel]):
         if annotation is list or get_origin(annotation) is list:
             if isinstance(field_info.default, Iterable):
                 field_info.default = ",".join(field_info.default)
-            ret[name] = (str if f.is_required() else Optional[str], field_info)
+            ret[name] = (str if f.is_required() else str | None, field_info)
         else:
             ret[name] = (f.annotation, field_info)
 

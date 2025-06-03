@@ -1,4 +1,4 @@
-name: Publish
+name: Upload Python Package to PyPI
 
 on:
   release:
@@ -11,18 +11,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install Python
-        uses: actions/setup-python@v4
-      - name: Install poetry 
+        uses: actions/setup-python@v5
+      - name: Install poetry
         uses: abatilo/actions-poetry@v4
-      - name: Config
+      - name: Publish package
         env:
-          PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
-          PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+          PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
         run: |
-          poetry config http-basic.pypi "${{ env.PYPI_USERNAME }}" "${{ env.PYPI_PASSWORD }}"
-      - name: Build
-        run: |
-          poetry build
-      - name: Publish
-        run: |
-          poetry publish
+          poetry publish \
+            --build \
+            --username "__token__" \
+            --password "${{ env.PYPI_API_TOKEN }}"

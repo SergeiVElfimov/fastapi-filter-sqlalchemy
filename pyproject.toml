@@ -19,7 +19,7 @@ ignore_missing_imports = true
 [tool.poetry]
 name = "fastapi-filter-sqlalchemy"
 version = "0.0.1"
-description = "FastAPI filter"
+description = "FastAPI filter SQLAlchemy"
 authors = ["Sergey V. Elfimov <elfimovserg@gmail.com>"]
 packages = [{include = "fastapi_filter_sqlalchemy"}]
 license = "Apache-2.0"
@@ -38,7 +38,7 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-SQLAlchemy = {version = ">=1.4.36,<2.1.0", optional = true}
+SQLAlchemy = ">=1.4.36,<2.1.0"
 fastapi = ">=0.100.0,<1.0"
 pydantic = ">=2.0.0,<3.0.0"
 python = ">=3.11,<4.0"
@@ -81,9 +81,7 @@ requires = ["poetry-core>=1.0.0"]
 
 [tool.ruff]
 line-length = 120
-# Assume Python 3.9 to be compatible with typing.
-target-version = "py39"
-# Exclude a variety of commonly ignored directories.
+target-version = "py311"
 exclude = [
     ".git",
     ".mypy_cache",
@@ -112,7 +110,6 @@ ignore = [
   "D213",  # Multi-line docstring summary should start at the second line.
 ]
 
-# Allow autofix for all enabled rules (when `--fix`) is provided.
 fixable = [
   "A",
   "B",
@@ -125,23 +122,16 @@ fixable = [
   "UP",
 ]
 unfixable = []
-
-# Allow unused variables when underscore-prefixed.
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 
 [tool.ruff.lint.isort]
 known-first-party = [
-  "fastapi_filter",
+  "fastapi_filter_sqlalchemy",
 ]
-
 [tool.ruff.lint.pydocstyle]
 convention = "pep257"
 
 [tool.ruff.format]
-# Like Black, use double quotes for strings.
 quote-style = "double"
-# Like Black, indent with spaces, rather than tabs.
 indent-style = "space"
-# Like Black, respect magic trailing commas.
 skip-magic-trailing-comma = false
-# Like Black, automaticall
