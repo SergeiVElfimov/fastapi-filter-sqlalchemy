@@ -43,7 +43,7 @@ fastapi = ">=0.100.0,<1.0"
 pydantic = ">=2.0.0,<3.0.0"
 python = ">=3.11,<4.0"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 Faker = "^26.0.0"
 SQLAlchemy-Utils = "^0.41.2"
 aiosqlite = "^0.20.0"
@@ -69,8 +69,6 @@ types-setuptools = "^70.1.0.20240627"
 typing-extensions = "^4.12.2"
 uvicorn = "^0.30.1"
 pydantic = {extras = ["email"], version="^2.7.4"}
-
-[tool.poetry.group.dev.dependencies]
 nox = "^2024.4.15"
 ruff = "^0.5.0"
 urllib3 = "<=2.2.2"
