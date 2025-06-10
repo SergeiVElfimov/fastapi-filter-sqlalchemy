@@ -165,15 +165,22 @@ class Filter(BaseFilterModel):
         :param field_name: Name of the filter field.
         :return: Returns the query.
         """
-        # Делаем провреку, что такого поля нету в модели
-        # Если нету то вызываем метод get_field_name
-        # Передаем в него запрос и значение.
+        # We check that such a field does not exist in the models.
+        # If not, we call the get_field_name method.
+        # We pass the request and value to it.
         if hasattr(self.Constants.model, field_name):
             model_field = getattr(self.Constants.model, field_name)
             if to_date:
                 model_field = func.date(model_field)
             if operator != "likein" and operator != "between":
-                query = query.filter(getattr(model_field, operator)(value))
+                if (
+                    operator in ("like", "ilike")
+                    and not isinstance(model_field.type, String)
+                    and isinstance(value, str)
+                ):
+                    query = query.filter(getattr(func.cast(model_field, String), operator)(value))
+                else:
+                    query = query.filter(getattr(model_field, operator)(value))
             elif operator == "between":
                 query = query.filter(getattr(model_field, operator)(*value))
             else:
