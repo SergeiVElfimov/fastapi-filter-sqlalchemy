@@ -336,6 +336,8 @@ def UserFilter(User, Filter, AddressFilter, Address):
         age__gte: int | None = None
         age__in: list[int] | None = None
         age__range: list[int] | None = None
+        age__contains: str | None = None
+        age__icontains: str | None = None
         address: AddressFilter | None = FilterDepends(  # type: ignore[valid-type]
             with_prefix("address", AddressFilter), by_alias=True
         )
