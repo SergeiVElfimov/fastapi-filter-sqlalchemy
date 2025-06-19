@@ -14,13 +14,3 @@ This is a fork [fastapi-filter](https://github.com/arthurio/fastapi-filter)
 
 ## Installation
 ```pip install fastapi-filter-sqlalchemy```
-
-## Contribution
-
-You can run tests with `pytest`.
-
-```
-pip install poetry
-poetry install
-pytest
-```
