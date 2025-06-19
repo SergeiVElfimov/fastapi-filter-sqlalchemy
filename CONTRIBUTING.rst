@@ -31,14 +31,19 @@ You want to contribute some code? Great! Here are a few steps to get you started
 #. **Clone your fork and create a branch for the code you want to add**
 #. **Install the package in development mode**
 
-.. code:: console
+    .. code:: console
 
-    $ pip install poetry
-    $ poetry install
+        $ pip install poetry
+        $ poetry install
 
 #. **Make your changes and check**
 #. **Update the tests if necessary**
 #. **Run tests. The project is setup to use pytest for testing**
+
+    .. code:: console
+
+        $ pytest
+
 #. **Update documentation**
 #. **Push your branch and submit a pull request to the main branch on GitHub**
 #. **Your code must pass all the required CI jobs before it is merged**
