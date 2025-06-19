@@ -25,8 +25,6 @@ Please always check for existing issues before opening a new issue.
 Pull requests
 *************
 
-You want to contribute some code? Great! Here are a few steps to get you started:
-
 #. **Fork the repository on GitHub**
 #. **Clone your fork and create a branch for the code you want to add**
 #. **Install the package in development mode**
