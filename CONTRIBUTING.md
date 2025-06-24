@@ -1,10 +1,4 @@
-.. |br| raw:: html
-
-   <br />
-
-############
-Contributing
-############
+# Contributing
 
 Contributions are always welcome and appreciated! Here are some ways you can contribute.
 
@@ -21,27 +15,23 @@ You can and should open an issue for any of the following reasons:
 
 Please always check for existing issues before opening a new issue.
 
-*************
+******
 Pull requests
-*************
+******
 
-#. **Fork the repository on GitHub**
-#. **Clone your fork and create a branch for the code you want to add**
-#. **Install the package in development mode**
-
-    .. code:: console
+1. **Fork the repository on GitHub**
+2. **Clone your fork and create a branch for the code you want to add**
+3. **Install the package in development mode**
 
         $ pip install poetry
         $ poetry install
 
-#. **Make your changes and check**
-#. **Update the tests if necessary**
-#. **Run tests. The project is setup to use pytest for testing**
-
-    .. code:: console
+4. **Make your changes and check**
+5. **Update the tests if necessary**
+6. **Run tests. The project is setup to use pytest for testing**
 
         $ pytest
 
-#. **Update documentation**
-#. **Push your branch and submit a pull request to the main branch on GitHub**
-#. **Your code must pass all the required CI jobs before it is merged**
+7. **Update documentation**
+8. **Push your branch and submit a pull request to the main branch on GitHub**
+9. **Your code must pass all the required CI jobs before it is merged**

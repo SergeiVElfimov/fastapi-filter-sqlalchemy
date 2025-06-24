@@ -14,3 +14,7 @@ This is a fork [fastapi-filter](https://github.com/arthurio/fastapi-filter)
 
 ## Installation
 ```pip install fastapi-filter-sqlalchemy```
+
+## Contributing
+
+Before contributing please read our [contributing guidelines](CONTRIBUTING.md).
