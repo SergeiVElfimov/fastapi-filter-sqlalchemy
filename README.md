@@ -2,6 +2,7 @@
 
 [![build-status-image]][build-status]
 [![pypi-version]][pypi]
+[![codeql-image]][codeql]
 
 This is a fork [fastapi-filter](https://github.com/arthurio/fastapi-filter)
 
@@ -27,3 +28,5 @@ Before contributing please read our [contributing guidelines](CONTRIBUTING.md).
 [build-status]: https://github.com/SergeiVElfimov/fastapi-filter-sqlalchemy/actions/workflows/python-package.yml
 [pypi-version]: https://img.shields.io/pypi/v/fastapi-filter-sqlalchemy.svg
 [pypi]: https://pypi.org/project/fastapi-filter-sqlalchemy/
+[codeql-image]: https://github.com/SergeiVElfimov/fastapi-filter-sqlalchemy/actions/workflows/codeql.yml/badge.svg
+[codeql]: https://github.com/SergeiVElfimov/fastapi-filter-sqlalchemy/actions/workflows/codeql.yml
