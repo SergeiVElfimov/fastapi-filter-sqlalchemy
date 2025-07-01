@@ -1,4 +1,8 @@
 # FastAPI filter SQLAlchemy
+
+[![build-status-image]][build-status]
+[![pypi-version]][pypi]
+
 This is a fork [fastapi-filter](https://github.com/arthurio/fastapi-filter)
 
 - added functionality for creating custom filters (analog SerializerMethodField into [drf](https://github.com/encode/django-rest-framework)).
@@ -18,3 +22,8 @@ This is a fork [fastapi-filter](https://github.com/arthurio/fastapi-filter)
 ## Contributing
 
 Before contributing please read our [contributing guidelines](CONTRIBUTING.md).
+
+[build-status-image]: https://github.com/SergeiVElfimov/fastapi-filter-sqlalchemy/actions/workflows/python-package.yml/badge.svg
+[build-status]: https://github.com/SergeiVElfimov/fastapi-filter-sqlalchemy/actions/workflows/python-package.yml
+[pypi-version]: https://img.shields.io/pypi/v/fastapi-filter-sqlalchemy.svg
+[pypi]: https://pypi.org/project/fastapi-filter-sqlalchemy/
