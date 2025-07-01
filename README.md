@@ -1,8 +1,9 @@
 # FastAPI filter SQLAlchemy
 
 [![build-status-image]][build-status]
-[![pypi-version]][pypi]
 [![codeql-image]][codeql]
+[![pypi-version]][pypi]
+[![pypi-downloads]][pypi]
 
 This is a fork [fastapi-filter](https://github.com/arthurio/fastapi-filter)
 
@@ -21,12 +22,13 @@ This is a fork [fastapi-filter](https://github.com/arthurio/fastapi-filter)
 ```pip install fastapi-filter-sqlalchemy```
 
 ## Contributing
-
+?color=%232E73B2&logo=python&logoColor=%23F9D25F
 Before contributing please read our [contributing guidelines](CONTRIBUTING.md).
 
 [build-status-image]: https://github.com/SergeiVElfimov/fastapi-filter-sqlalchemy/actions/workflows/python-package.yml/badge.svg
 [build-status]: https://github.com/SergeiVElfimov/fastapi-filter-sqlalchemy/actions/workflows/python-package.yml
-[pypi-version]: https://img.shields.io/pypi/v/fastapi-filter-sqlalchemy.svg
-[pypi]: https://pypi.org/project/fastapi-filter-sqlalchemy/
 [codeql-image]: https://github.com/SergeiVElfimov/fastapi-filter-sqlalchemy/actions/workflows/codeql.yml/badge.svg
 [codeql]: https://github.com/SergeiVElfimov/fastapi-filter-sqlalchemy/actions/workflows/codeql.yml
+[pypi-version]: https://img.shields.io/pypi/v/fastapi-filter-sqlalchemy.svg
+[pypi-downloads]: https://img.shields.io/pypi/dm/fastapi-filter-sqlalchemy?color=%232E73B2&logo=python&logoColor=%23F9D25F
+[pypi]: https://pypi.org/project/fastapi-filter-sqlalchemy/
