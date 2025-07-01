@@ -22,7 +22,7 @@ This is a fork [fastapi-filter](https://github.com/arthurio/fastapi-filter)
 ```pip install fastapi-filter-sqlalchemy```
 
 ## Contributing
-?color=%232E73B2&logo=python&logoColor=%23F9D25F
+
 Before contributing please read our [contributing guidelines](CONTRIBUTING.md).
 
 [build-status-image]: https://github.com/SergeiVElfimov/fastapi-filter-sqlalchemy/actions/workflows/python-package.yml/badge.svg
