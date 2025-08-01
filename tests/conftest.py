@@ -123,6 +123,7 @@ def User(Base, Address, FavoriteSport, Sport):
         updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now, nullable=False)
         name = Column(String)
         age = Column(Integer, nullable=False)
+        code = Column(String)
         address_id = Column(Integer, ForeignKey("addresses.id"))
         address: Mapped[Address] = relationship(Address, backref="users", lazy="joined")  # type: ignore[valid-type]
         favorite_sports: Mapped[Sport] = relationship(  # type: ignore[valid-type]
@@ -178,24 +179,28 @@ async def users(session, User, Address):
             name=None,
             age=21,
             created_at=datetime(2021, 12, 1),
+            code="21",
         ),
         User(
             name="Mr Praline",
             age=33,
             created_at=datetime(2021, 12, 1),
             address=Address(street="22 rue Bellier", city="Nantes", country="France"),
+            code="11",
         ),
         User(
             name="The colonel",
             age=90,
             created_at=datetime(2021, 12, 2),
             address=Address(street="Wrench", city="Bathroom", country="Clue"),
+            code="11222",
         ),
         User(
             name="Mr Creosote",
             age=21,
             created_at=datetime(2021, 12, 3),
             address=Address(city="Nantes", country="France"),
+            code="321",
         ),
         User(
             name="Rabbit of Caerbannog",
@@ -208,6 +213,7 @@ async def users(session, User, Address):
             age=50,
             created_at=datetime(2021, 12, 4),
             address=Address(street="4567 avenue", city="Denver", country="United States"),
+            code="89",
         ),
     ]
     session.add_all(user_instances)
@@ -349,6 +355,8 @@ def UserFilter(User, Filter, AddressFilter, Address):
             model = User
             search_model_fields = ["name"]
             search_field_name = "search"
+            ordering_lower_case_fields = ["name"]
+            ordering_convert_str_to_int_fields = ["code"]
 
         def get_custom_filter(self, query, value):
             return query.filter(
