@@ -22,6 +22,12 @@ from sqlalchemy import select
             lambda previous_user, user: (previous_user.age < user.age)
             or (previous_user.age == user.age and previous_user.created_at >= user.created_at),
         ],
+        [
+            ["code"],
+            lambda previous_user, user: int(previous_user.code) <= int(user.code)
+            if previous_user.code and user.code
+            else True,
+        ],
     ],
 )
 @pytest.mark.asyncio
