@@ -9,6 +9,7 @@ from sqlalchemy.orm import Query
 from sqlalchemy.sql.selectable import Select
 
 from .base import BaseFilterModel
+from .constants import EMPTY_STRING
 
 
 def _backward_compatible_value_for_like_and_ilike(value: str):
@@ -212,15 +213,21 @@ class Filter(BaseFilterModel):
 
             field_name = field_name.replace("-", "").replace("+", "")
             order_by_field = getattr(self.Constants.model, field_name)
+            additional_field_name = EMPTY_STRING
             if field_name in self.Constants.ordering_convert_str_to_int_fields:
                 order_by_field = cast(order_by_field, BigInteger)
-                query = query.add_columns(order_by_field.label(f"{field_name}_integer_value"))
+                additional_field_name = "integer_value"
             if field_name in self.Constants.ordering_lower_case_fields:
                 order_by_field = func.lower(order_by_field)
-                query = query.add_columns(order_by_field.label(f"{field_name}_lower_case"))
+                additional_field_name = "lower_case"
             if field_name in self.Constants.ordering_fk_fields_mapping:
                 model = self.Constants.ordering_fk_fields_mapping[field_name]
                 order_by_field = getattr(model, base_field_name)
+
+            # Here add new columns, so that you can sort by them.
+            if additional_field_name is not EMPTY_STRING:
+                query = query.add_columns(order_by_field.label(f"{field_name}_{additional_field_name}"))
+
             query = query.order_by(getattr(order_by_field, direction)())
 
         return query
