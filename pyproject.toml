@@ -18,7 +18,7 @@ ignore_missing_imports = true
 
 [tool.poetry]
 name = "fastapi-filter-sqlalchemy"
-version = "0.0.5"
+version = "0.0.6"
 description = "FastAPI filter SQLAlchemy"
 authors = ["Sergey V. Elfimov <elfimovserg@gmail.com>"]
 packages = [{include = "fastapi_filter_sqlalchemy"}]
