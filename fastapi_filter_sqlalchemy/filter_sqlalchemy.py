@@ -42,6 +42,7 @@ _orm_operator_transformer = {
     "lte": lambda value: ("__le__", value),
     "contains": lambda value: ("like", _backward_compatible_value_for_like_and_ilike(value)),
     "icontains": lambda value: ("ilike", _backward_compatible_value_for_like_and_ilike(value)),
+    "ilike": lambda value: ("ilike", _backward_compatible_value_for_like_and_ilike(value)),
     "range": lambda value: ("between", value),
     # XXX(arthurio): Mysql excludes None values when using `in` or `not in` filters.
     "not": lambda value: ("is_not", value),

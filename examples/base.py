@@ -93,12 +93,13 @@ class UserFilter(Filter):
     name: str | None = None
     name__contains: str | None = None
     name__icontains: str | None = None
+    name__ilike: str | None = None
     name__neq: str | None = None
     address: AddressFilter | None = FilterDepends(with_prefix("address", AddressFilter))
     age__lt: int | None = None
     age__gt: int | None = None
     age__contains: str | None = None
-    age__icontains: str | None = None
+    age__ilike: str | None = None
 
     order_by: list[str] = ["age"]
     search: str | None = None

@@ -330,6 +330,7 @@ def UserFilter(User, Filter, AddressFilter, Address):
         name__neq: str | None = None
         name__contains: str | None = None
         name__icontains: str | None = None
+        name__ilike: str | None = None
         name__in: list[str] | None = None
         name__not: str | None = None
         name__not_in: list[str] | None = None
@@ -344,6 +345,7 @@ def UserFilter(User, Filter, AddressFilter, Address):
         age__range: list[int] | None = None
         age__contains: str | None = None
         age__icontains: str | None = None
+        age__ilike: str | None = None
         address: AddressFilter | None = FilterDepends(  # type: ignore[valid-type]
             with_prefix("address", AddressFilter), by_alias=True
         )
